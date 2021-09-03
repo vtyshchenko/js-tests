@@ -139,17 +139,17 @@
 //как отдельный список из трёх элементов.
 //Задание
 //Напишите функцию arrayToList, которая строит такую структуру, получая в качестве аргумента [1, 2, 3]
-function arrayToList(params) {
-  let objectList = null;
-  params = params.reverse();
-  for (let i = 0; i < params.length; i += 1) {
-    const element = params[i];
-    objectList = { value: element, rest: objectList };
-  }
-  return objectList;
-}
+// function arrayToList(params) {
+//   let objectList = null;
+//   params = params.reverse();
+//   for (let i = 0; i < params.length; i += 1) {
+//     const element = params[i];
+//     objectList = { value: element, rest: objectList };
+//   }
+//   return objectList;
+// }
 
-console.log(arrayToList([1, 2, 3, 8, 125, 22, 0]));
+// console.log(arrayToList([1, 2, 3, 8, 125, 22, 0]));
 
 /*-----------------Задача №2------------------*/
 //Оператор == сравнивает переменные объектов, проверяя, ссылаются ли они на один объект.
@@ -160,45 +160,45 @@ console.log(arrayToList([1, 2, 3, 8, 125, 22, 0]));
 //используйте оператор typeof. Если он выдаёт “object” для обеих величин, значит нужно делать глубокое сравнение.
 //Не забудьте об одном дурацком исключении, случившемся из-за исторических причин: “typeof null” тоже возвращает “object”.
 //Решите задачу без использования метода JSON.stringify()
-function deepEqual(obj1, obj2) {
-  let res = obj1 === obj2;
-  if (res) {
-    return res;
-  }
+// function deepEqual(obj1, obj2) {
+//   let res = obj1 === obj2;
+//   if (res) {
+//     return res;
+//   }
 
-  if (
-    (typeof obj1 === typeof obj2) &
-    (typeof obj1 === "object") &
-    (obj1 !== null) &
-    (obj2 !== null)
-  ) {
-    for (const key in obj1) {
-      if (obj2.hasOwnProperty(key)) {
-        const element1 = obj1[key];
-        const element2 = obj2[key];
-        res = deepEqual(element1, element2);
-        return res;
-      } else {
-        return false;
-      }
-    }
-  } else {
-    return false;
-  }
-}
+//   if (
+//     (typeof obj1 === typeof obj2) &
+//     (typeof obj1 === "object") &
+//     (obj1 !== null) &
+//     (obj2 !== null)
+//   ) {
+//     for (const key in obj1) {
+//       if (obj2.hasOwnProperty(key)) {
+//         const element1 = obj1[key];
+//         const element2 = obj2[key];
+//         res = deepEqual(element1, element2);
+//         return res;
+//       } else {
+//         return false;
+//       }
+//     }
+//   } else {
+//     return false;
+//   }
+// }
 
-var obj = { here: { is: "an" }, object: 2 };
-console.log(obj, obj);
-console.log(deepEqual(obj, obj));
-// → true
-console.log("------------------------------------------------");
-console.log(obj, { here: 1, object: 2 });
-console.log(deepEqual(obj, { here: 1, object: 2 }));
-// → false
-console.log("------------------------------------------------");
-console.log(obj, { here: { is: "an" }, object: 2 });
-console.log(deepEqual(obj, { here: { is: "an" }, object: 2 }));
-// → true
+// let obj = { here: { is: "an" }, object: 2 };
+// console.log(obj, obj);
+// console.log(deepEqual(obj, obj));
+// // → true
+// console.log("------------------------------------------------");
+// console.log(obj, { here: 1, object: 2 });
+// console.log(deepEqual(obj, { here: 1, object: 2 }));
+// // → false
+// console.log("------------------------------------------------");
+// console.log(obj, { here: { is: "an" }, object: 2 });
+// console.log(deepEqual(obj, { here: { is: "an" }, object: 2 }));
+// // → true
 
 // function createArr(n) {
 //   const res = [];
@@ -214,15 +214,51 @@ console.log(deepEqual(obj, { here: { is: "an" }, object: 2 }));
 // ----------------------------------------------------------------------------------------------------
 // Напишите программу, которая выводит на экран числа от 1 до 100. При этом вместо чисел, кратных трем, программа должна выводить слово «Fizz»,
 // а вместо чисел, кратных пяти — слово «Buzz».Если число кратно и 3, и 5, то программа должна выводить слово «FizzBuzz»
+// function createArr1(n) {
+//   for (let i = 1; i <= n; i += 1) {
+//     s = "";
+//     if (i % 3 === 0) {
+//       s += "Fizz";
+//     }
+//     if (i % 5 === 0) {
+//       s += "Buzz";
+//     }
 
-for (let i = 1; i <= 100; i += 1) {
-  s = "";
-  if (i % 3 === 0) {
-    s += "Fizz";
-  }
-  if (i % 5 === 0) {
-    s += "Buzz";
-  }
+//     console.log(s ? s : i);
+//   }
+// }
 
-  console.log(s === "" ? i : s);
-}
+// function createArr(n) {
+//   for (let i = 1; i <= n; i += 1) {
+//     if (i % 3 === 0 && i % 5 === 0) {
+//       console.log("FizzBuzz");
+//     } else if (i % 3 === 0) {
+//       console.log("Fizz");
+//     } else if (i % 5 === 0) {
+//       console.log("Buzz");
+//     } else {
+//       console.log(i);
+//     }
+//   }
+// }
+
+// let cnt = 1000;
+// console.time();
+// createArr1(cnt);
+// console.timeEnd();
+
+// console.time();
+// createArr(cnt);
+// console.timeEnd();
+
+// function limitStr(str, n, symb) {
+//   let res = str;
+//   if (n && str.length > n) {
+//     res = str.slice(0, n) + (symb ? symb : "...");
+//   }
+//   return res;
+// }
+
+// console.log(limitStr("dfgdfgdfgdfg"));
+// console.log(limitStr("dfgdfgdfgdfg", 5));
+// console.log(limitStr("dfgdfgdfgdfg", 5, "!"));
